@@ -3,14 +3,15 @@ package lab2
 import (
 	"fmt"
 	"strings"
+	"unicode"
 )
 
 // TODO: document this function.
 // PrefixToInfix converts
-func PrefixToInfix(input string) (string, error) {
+func prefixToInfix(prefix string) (string, error) {
 	availableOptions := map[string]bool{"+": true, "-": true, "*": true, "/": true, "^": true}
 	stack := []string{}
-	elements := strings.Split(input, " ")
+	elements := strings.Split(prefix, " ")
 	for i := len(elements) - 1; i >= 0; i-- {
 		element := elements[i]
 		if _, valid := availableOptions[element]; valid {
@@ -24,6 +25,9 @@ func PrefixToInfix(input string) (string, error) {
 			stack = append(stack, expression)
 		} else {
 			stack = append(stack, element)
+		}
+		if unicode.IsLetter(rune(element[0])) {
+			return "", fmt.Errorf("letters are not allowed")
 		}
 	}
 
