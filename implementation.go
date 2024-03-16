@@ -6,9 +6,7 @@ import (
 	"unicode"
 )
 
-// TODO: document this function.
-// PrefixToInfix converts
-func prefixToInfix(prefix string) (string, error) {
+func PrefixToInfix(prefix string) (string, error) {
 	availableOptions := map[string]bool{"+": true, "-": true, "*": true, "/": true, "^": true}
 	stack := []string{}
 	elements := strings.Split(prefix, " ")
