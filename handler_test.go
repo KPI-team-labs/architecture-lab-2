@@ -27,8 +27,8 @@ func (s *MySuite) TestComputeHandler_Compute_SyntaxError(c *C) {
 	c.Assert(err, NotNil)
 }
 
-func (s *MySuite) TestComputeHandler_Compute_EmptyInput(c *C) {
-	input := ""
+func (s *MySuite) TestComputeHandler_Compute_Letters(c *C) {
+	input := "+ a b"
 	outputBuffer := &bytes.Buffer{}
 	handler := &ComputeHandler{
 		Input:  strings.NewReader(input),
@@ -38,6 +38,6 @@ func (s *MySuite) TestComputeHandler_Compute_EmptyInput(c *C) {
 	err := handler.Compute()
 	c.Assert(err, NotNil)
 
-	expectedOutput := "Syntax error: empty input\n"
+	expectedOutput := "letters are not allowed\n"
 	c.Assert(outputBuffer.String(), Equals, expectedOutput)
 }
