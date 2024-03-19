@@ -9,11 +9,11 @@ import (
 
 func Test(t *testing.T) { TestingT(t) }
 
-type PrefixToInfixSuite struct{}
+type MySuite struct{}
 
-var _ = Suite(&PrefixToInfixSuite{})
+var _ = Suite(&MySuite{})
 
-func (s *PrefixToInfixSuite) TestPrefixToInfix(c *C) {
+func (s *MySuite) TestPrefixToInfix(c *C) {
 	testCases := []struct {
 		input    string
 		expected string
@@ -35,9 +35,9 @@ func (s *PrefixToInfixSuite) TestPrefixToInfix(c *C) {
 	for _, tc := range testCases {
 		result, err := PrefixToInfix(tc.input)
 		if err != nil && tc.err != nil {
-			c.Check(err.Error(), Equals, tc.err.Error())
+			c.Assert(err.Error(), Equals, tc.err.Error())
 		} else {
-			c.Check(strings.TrimSpace(result), Equals, tc.expected)
+			c.Assert(strings.TrimSpace(result), Equals, tc.expected)
 		}
 	}
 }
