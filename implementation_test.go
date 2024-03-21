@@ -42,13 +42,12 @@ func (s *MySuite) TestPrefixToInfix(c *C) {
 	}
 }
 
-func ExampleTestPrefixToInfix() {
+func ExamplePrefixToInfix() {
 	res, err := PrefixToInfix("+ 3 4")
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(res)
-
 	// Output:
 	// (3 + 4)
 }
