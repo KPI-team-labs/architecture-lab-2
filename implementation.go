@@ -6,10 +6,10 @@ import (
 	"unicode"
 )
 
-// PrefixToInfix function is to convert prefix expression into infix
-// Input accepts a string representation of prefix expression
-// Error if the prefix expression is not valid or contains numerical characters
-// Output if the prefix expression is appropriate string will be converted to infix
+// PrefixToInfix function is to convert prefix expression into infix;
+// Input accepts a string representation of prefix expression;
+// Error if the prefix expression is not valid or contains numerical characters;
+// Output if the prefix expression is appropriate string will be converted to infix;
 func PrefixToInfix(prefix string) (string, error) {
 	availableOptions := map[string]bool{"+": true, "-": true, "*": true, "/": true, "^": true}
 	stack := []string{}
